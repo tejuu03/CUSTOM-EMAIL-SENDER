@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender - Upload</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Custom Email Sender</h1>
+        <form id="upload-form" method="POST" enctype="multipart/form-data" action="/upload">
+            <div class="input-group">
+                <label for="file">Upload CSV File:</label>
+                <input type="file" id="file" name="file" accept=".csv" required>
+            </div>
+            <div class="input-group">
+                <label for="subject">Email Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter the email subject" required>
+            </div>
+            <div class="input-group">
+                <label for="prompt">Email Content Prompt:</label>
+                <textarea id="prompt" name="prompt" rows="5" placeholder="Hello {Company Name}, we have exciting offers on {Products}!" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="send_time">Schedule Send Time (HH:MM):</label>
+                <input type="time" id="send_time" name="send_time" required>
+            </div>
+            <button type="submit" class="btn">Schedule Emails</button>
+        </form>
+    </div>
+</body>
+</html>
+

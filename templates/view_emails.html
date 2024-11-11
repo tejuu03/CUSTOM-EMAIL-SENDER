@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Scheduled Emails</title>
+</head>
+<body>
+    <h1>Scheduled Emails</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Prompt</th>
+                <th>Send Time</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+            <tr>
+                <td>{{ email.subject }}</td>
+                <td>{{ email.prompt }}</td>
+                <td>{{ email.send_time }}</td>
+                <td>{{ email.created_at }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No emails scheduled yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+

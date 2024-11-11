@@ -1,0 +1,10 @@
+Flask
+Flask-SocketIO
+pandas
+smtplib
+openai
+sendgrid
+celery
+redis
+google-api-python-client
+Flask-Migrate

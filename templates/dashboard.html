@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Socket.IO script -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Sending Dashboard</h1>
+        <div class="status-board">
+            <div class="status-item">
+                <h3>Total Emails Sent</h3>
+                <p id="total-sent">0</p>
+            </div>
+            <div class="status-item">
+                <h3>Emails Pending</h3>
+                <p id="pending-emails">0</p>
+            </div>
+            <div class="status-item">
+                <h3>Emails Scheduled</h3>
+                <p id="scheduled-emails">0</p>
+            </div>
+            <div class="status-item">
+                <h3>Emails Failed</h3>
+                <p id="failed-emails">0</p>
+            </div>
+        </div>
+        <canvas id="analyticsChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- WebSocket for live updates -->
+    <script>
+        const socket = io();
+
+        socket.on('update_dashboard', function(data) {
+            // Update dashboard status counts and chart with live data
+            const sent = data.filter(item => item.status === 'Sent').length;
+            const pending = data.filter(item => item.status === 'Pending').length;
+            const scheduled = data.length - sent - pending;
+            updateDashboard(sent, pending, scheduled, 0);
+        });
+    </script>
+
+    <!-- Chart.js and update functions -->
+    <script>
+        // Sample data for the chart
+        const data = {
+            labels: ['Sent', 'Pending', 'Scheduled', 'Failed'],
+            datasets: [{
+                label: 'Email Analytics',
+                data: [0, 0, 0, 0], // Initial values
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const analyticsChart = new Chart(
+            document.getElementById('analyticsChart'),
+            config
+        );
+
+        // Function to update the dashboard
+        function updateDashboard(sent, pending, scheduled, failed) {
+            document.getElementById('total-sent').innerText = sent;
+            document.getElementById('pending-emails').innerText = pending;
+            document.getElementById('scheduled-emails').innerText = scheduled;
+            document.getElementById('failed-emails').innerText = failed;
+            
+            analyticsChart.data.datasets[0].data = [sent, pending, scheduled, failed];
+            analyticsChart.update();
+        }
+
+        // Simulate data update (remove this for actual usage)
+        setTimeout(() => {
+            updateDashboard(25, 10, 10, 5);
+        }, 2000);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

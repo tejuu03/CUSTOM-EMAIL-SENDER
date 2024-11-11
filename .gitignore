@@ -1,0 +1,86 @@
+# Python
+*.py[cod]
+*.pyo
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Environment Variables
+.env
+*.env
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Flask
+instance/
+*.sqlite3
+*.db
+
+# SQLAlchemy
+migrations/
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Celery
+celerybeat-schedule
+*.pid
+
+# Redis Dump
+dump.rdb
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Python Bytecode
+*.py[cod]
+__pycache__/
+
+# Token Files
+credentials.json
+token.json
+
+# Logs and Local Data
+logs/
+*.log
+*.pot
+*.mo
+*.cache
+*.coverage
+.coverage.*
+.hypothesis/
+
+# IDE Configurations
+.idea/
+*.iml
+
+# HTML and Frontend Caches
+*.cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Static Files
+staticfiles/
+node_modules/
+
+# Pytest
+.pytest_cache/
