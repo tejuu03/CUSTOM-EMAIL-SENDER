@@ -109,6 +109,11 @@ Email Scheduling: You can schedule emails to be sent later.
 Content Generation: Use OpenAI's API to generate dynamic email content based on prompts.
 Send Email: Emails can be sent using either Gmail or SendGrid, depending on your chosen configuration.
 
+## Video Demonstration
+You can watch the demo video of the project [here](https://drive.google.com/file/d/1v-ZBTgTJHpVJld7Y0l-NqYp6-UG359eL/view?usp=drive_link).
+
+
+
 **Authors:**
 TEJASWINI GUDIPATI
 
